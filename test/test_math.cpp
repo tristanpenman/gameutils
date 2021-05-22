@@ -8,7 +8,7 @@ using gameutils::Mat3;
 using gameutils::Mat4;
 using gameutils::Quat;
 
-class MathTest : public testing::Test
+class TestMath : public testing::Test
 {
 
 };
@@ -19,7 +19,7 @@ class MathTest : public testing::Test
 //
 //----------------------------------------------------------------------------
 
-TEST_F(MathTest, Vec2_arithmetic)
+TEST_F(TestMath, Vec2_arithmetic)
 {
     const Vec2<double> v1(1.0, 1.0);
 
@@ -62,7 +62,7 @@ TEST_F(MathTest, Vec2_arithmetic)
     EXPECT_EQ(4.0, v2.y);
 }
 
-TEST_F(MathTest, Vec2_assignment)
+TEST_F(TestMath, Vec2_assignment)
 {
     const Vec2<double> v1(3.0, 4.0);
 
@@ -72,7 +72,7 @@ TEST_F(MathTest, Vec2_assignment)
     EXPECT_EQ(4.0, v2.y);
 }
 
-TEST_F(MathTest, Vec2_comparison)
+TEST_F(TestMath, Vec2_comparison)
 {
     const Vec2<double> v0(3.0, 4.0);
     const Vec2<double> v1(3.0, 4.0);
@@ -100,7 +100,7 @@ TEST_F(MathTest, Vec2_comparison)
     EXPECT_TRUE(v3.equalTo(v3, 5));
 }
 
-TEST_F(MathTest, Vec2_construction)
+TEST_F(TestMath, Vec2_construction)
 {
     const Vec2<double> v1(3.0, 4.0);
     EXPECT_EQ(3.0, v1.x);
@@ -111,7 +111,7 @@ TEST_F(MathTest, Vec2_construction)
     EXPECT_EQ(0.0, v2.y);
 }
 
-TEST_F(MathTest, Vec2_dot)
+TEST_F(TestMath, Vec2_dot)
 {
     const Vec2<double> v1(3.0, 4.0);
     const Vec2<double> v2(2.0, 5.0);
@@ -121,7 +121,7 @@ TEST_F(MathTest, Vec2_dot)
     EXPECT_EQ(26.0, dotProduct);
 }
 
-TEST_F(MathTest, Vec2_length)
+TEST_F(TestMath, Vec2_length)
 {
     const Vec2<double> v1(3.0, 4.0);
     const double epsilon = 0.00001;
@@ -131,7 +131,7 @@ TEST_F(MathTest, Vec2_length)
     EXPECT_TRUE(abs(expectedLength - actualLength) < epsilon);
 }
 
-TEST_F(MathTest, Vec2_perp)
+TEST_F(TestMath, Vec2_perp)
 {
     const Vec2<double> v1(3.0, 4.0);
     const Vec2<double> v2 = v1.perp();
@@ -146,7 +146,7 @@ TEST_F(MathTest, Vec2_perp)
 //
 //----------------------------------------------------------------------------
 
-TEST_F(MathTest, Mat3_inverse)
+TEST_F(TestMath, Mat3_inverse)
 {
     // Ensure that multiplying a vector by a matrix followed by the matrix
     // inverse results in the original vector.
@@ -159,7 +159,7 @@ TEST_F(MathTest, Mat3_inverse)
     EXPECT_TRUE(actual.equalTo(v, 5));
 }
 
-TEST_F(MathTest, Mat3_invert)
+TEST_F(TestMath, Mat3_invert)
 {
     // Ensure that multiplying a vector by a matrix followed by the matrix
     // inverse results in the original vector, when the in-place invert()
@@ -181,7 +181,7 @@ TEST_F(MathTest, Mat3_invert)
 //
 //----------------------------------------------------------------------------
 
-TEST_F(MathTest, Quat_multiplication)
+TEST_F(TestMath, Quat_multiplication)
 {
     // Ensure that quaternion multiplication produces the correct result for
     // an example pulled from a Wolfram Alpha query:
@@ -210,7 +210,7 @@ TEST_F(MathTest, Quat_multiplication)
     EXPECT_TRUE(actual.equalTo(expected, 5));
 }
 
-TEST_F(MathTest, Quat_rotation)
+TEST_F(TestMath, Quat_rotation)
 {
     Quat<float> a = Quat<float>::rotation(M_PI / 2, 1, 0, 0);
 

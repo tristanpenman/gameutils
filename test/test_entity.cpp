@@ -14,12 +14,12 @@ using gameutils::EntityManager;
 using gameutils::InvalidEntity;
 using gameutils::getComponentAs;
 
-class EntitySystemTest : public testing::Test
+class TestEntity : public testing::Test
 {
 
 };
 
-TEST_F(EntitySystemTest, createEntity)
+TEST_F(TestEntity, createEntity)
 {
     set<EntityId> usedIDs;
 
@@ -33,7 +33,7 @@ TEST_F(EntitySystemTest, createEntity)
     }
 }
 
-TEST_F(EntitySystemTest, destroyEntity)
+TEST_F(TestEntity, destroyEntity)
 {
     struct TestDestructionComponent: public Component
     {
@@ -72,7 +72,7 @@ TEST_F(EntitySystemTest, destroyEntity)
     EXPECT_TRUE(componentDestroyed);
 }
 
-TEST_F(EntitySystemTest, destroyAllEntities)
+TEST_F(TestEntity, destroyAllEntities)
 {
     EntityManager em;
     EntityId id1 = em.createEntity();
@@ -84,7 +84,7 @@ TEST_F(EntitySystemTest, destroyAllEntities)
     EXPECT_FALSE(em.destroyEntity(id2));
 }
 
-TEST_F(EntitySystemTest, markForRemoval_and_purge)
+TEST_F(TestEntity, markForRemoval_and_purge)
 {
     set<EntityId> usedIDs;
 
@@ -121,7 +121,7 @@ struct AnonymousComponent2: public Component
 
 };
 
-TEST_F(EntitySystemTest, attachComponent_and_getComponent)
+TEST_F(TestEntity, attachComponent_and_getComponent)
 {
     EntityManager em;
     EntityId id = em.createEntity();
@@ -136,7 +136,7 @@ TEST_F(EntitySystemTest, attachComponent_and_getComponent)
     EXPECT_FALSE(em.attachComponent(id, make_shared<AnonymousComponent1>()));
 }
 
-TEST_F(EntitySystemTest, getComponentAs)
+TEST_F(TestEntity, getComponentAs)
 {
     EntityManager em;
     EntityId id = em.createEntity();
@@ -154,7 +154,7 @@ TEST_F(EntitySystemTest, getComponentAs)
     EXPECT_NE(nullptr, componentPtr);
 }
 
-TEST_F(EntitySystemTest, getEntityNodes)
+TEST_F(TestEntity, getEntityNodes)
 {
     EntityManager em;
     EntityId id1 = em.createEntity();
