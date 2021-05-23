@@ -10,9 +10,10 @@
 #include <vector>
 
 /**
- * The EntitySystem namespace contains an implementation of an entity
- * management system. This is an early stage (simplistic) implementation that
- * does not make any particular effort to optimise memory layout, management
+ * This header contains an implementation of an entity management system.
+ *
+ * This is an early stage (simplistic) implementation that does not make any
+ * particular effort to optimise memory layout, management
  * overhead, etc.
  *
  *
@@ -26,7 +27,6 @@
  * IDs are assigned automatically, since the IDs themselves are not intended
  * to possess any particular significance:
  *
- *     using namespace EntitySystem;
  *     EntityManager em;
  *     EntityId id = em.createEntity();
  *
@@ -40,7 +40,7 @@
  * A component is a set of attributes that can be attached to an entity at
  * runtime. All components must subclass the Component struct:
  *
- *     struct PlayerComponent: public EntitySystem::Component {
+ *     struct PlayerComponent: public gameutils::Component {
  *         PlayerComponent() : health(100), lives(3) {}
  *         float health;
  *         int lives;
@@ -54,7 +54,6 @@
  * Components are created and attached to an entity at runtime. Components
  * must be provided to the attachComponent function via a shared_ptr:
  *
- *     using namespace EntitySystem;
  *     EntityManager em;
  *     EntityId id = em.createEntity();
  *     em.attachComponent(id, std::make_shared<PlayerComponent>());
